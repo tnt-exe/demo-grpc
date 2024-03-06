@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService1.Protos";
+
+service EmployeeRpcService {
+	rpc SelectAll (Empty) returns (EmployeeList);
+	rpc SelectById (EmployeeFilter) returns (EmployeeEntity);
+	rpc Insert (CreateEmployee) returns (Empty);
+	rpc Update (UpdateEmployee) returns (Empty);
+	rpc Delete (EmployeeFilter) returns (Empty);
+}
+
+message Empty {
+
+}
+
+message EmployeeEntity {
+	int32 EmployeeId = 1;
+	string firstName = 2;
+	string lastName = 3;
+}
+
+message CreateEmployee {
+	string firstName = 2;
+	string lastName = 3;
+}
+
+message UpdateEmployee {
+	int32 EmployeeId = 1;
+	string firstName = 2;
+	string lastName = 3;
+}
+
+message EmployeeList {
+	repeated EmployeeEntity employees = 1;
+}
+
+message EmployeeFilter {
+	int32 EmployeeId = 1;
+}
