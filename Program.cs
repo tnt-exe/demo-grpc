@@ -17,6 +17,7 @@ namespace GrpcService1
             var app = builder.Build();
 
             app.MapGrpcService<EmployeeService>();
+            app.MapGrpcService<CategoryService>();
             app.MapGet("/", async context =>
             {
                 await context.Response.WriteAsync("Communication thru gRPC");

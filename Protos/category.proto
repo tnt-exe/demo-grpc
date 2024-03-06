@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService1.Protos";
+
+service CategoryRpcService {
+	rpc SelectAll (Nothing) returns (CategoryList);
+}
+
+message Nothing {}
+
+message CategoryEntity {
+	int32 CategoryId = 1;
+	string CategoryName = 2;
+	repeated ProductEntity Products = 3;
+}
+
+message ProductEntity {
+	int32 ProductId = 1;
+	string ProductName = 2;
+	int32 CategoryId = 3;
+}
+
+message CategoryList {
+	repeated CategoryEntity Categories = 1;
+}

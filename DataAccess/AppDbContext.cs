@@ -9,6 +9,8 @@ namespace GrpcService1.DataAccess
         }
 
         public DbSet<Employee> Employees { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<Product> Products { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,6 +34,46 @@ namespace GrpcService1.DataAccess
                     EmployeeId = 2,
                     FirstName = "Jane",
                     LastName = "Doe"
+                }
+            );
+
+            modelBuilder.Entity<Category>().HasData(
+                new Category
+                {
+                    CategoryId = 1,
+                    CategoryName = "Category 1"
+                },
+                new Category
+                {
+                    CategoryId = 2,
+                    CategoryName = "Category 2"
+                }
+            );
+
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    ProductId = 1,
+                    ProductName = "Product 1",
+                    CategoryId = 1
+                },
+                new Product
+                {
+                    ProductId = 2,
+                    ProductName = "Product 2",
+                    CategoryId = 2
+                },
+                new Product
+                {
+                    ProductId = 3,
+                    ProductName = "Product 3",
+                    CategoryId = 1
+                },
+                new Product
+                {
+                    ProductId = 4,
+                    ProductName = "Product 4",
+                    CategoryId = 2
                 }
             );
         }
